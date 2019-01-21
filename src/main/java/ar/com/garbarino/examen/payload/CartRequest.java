@@ -1,7 +1,6 @@
 package ar.com.garbarino.examen.payload;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class CartRequest {
@@ -12,7 +11,7 @@ public class CartRequest {
 	@NotBlank
 	@Size(max = 50)
 	String email;
-
+	
 	public String getFullname() {
 		return fullname;
 	}

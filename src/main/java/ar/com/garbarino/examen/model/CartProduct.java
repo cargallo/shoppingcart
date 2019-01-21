@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "cart_product")
 public class CartProduct {
 	@Id
-	@GeneratedValue
-	@Column(name = "user_group_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cart_product_id")
 	@JsonIgnore
 	Long id;
 	

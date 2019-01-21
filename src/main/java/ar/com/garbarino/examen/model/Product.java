@@ -1,7 +1,6 @@
 package ar.com.garbarino.examen.model;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -41,7 +40,16 @@ public class Product {
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonBackReference
-	Set<CartProduct> cartProducts = new HashSet<CartProduct>();
+	Set<CartProduct> cartProducts;
+	
+	public Product() {
+	}
+
+	public Product(@NotBlank @Size(max = 100) String description, BigDecimal unitPrice, @PositiveOrZero Long stock) {
+		this.description = description;
+		this.unitPrice = unitPrice;
+		this.stock = stock;
+	}
 
 	public Long getId() {
 		return id;

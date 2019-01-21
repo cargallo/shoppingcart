@@ -1,12 +1,13 @@
 package ar.com.garbarino.examen.model;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,11 +39,12 @@ public class Cart extends DateAudit {
 
 	BigDecimal total = BigDecimal.ZERO;
 
-	String status = "NEW";
+	@Enumerated(EnumType.ORDINAL)
+	CartStatus status = CartStatus.NEW;
 
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
-	Set<CartProduct> cartProducts = new HashSet<CartProduct>();
+	Set<CartProduct> cartProducts;
 
 	public Cart(String fullName, String email) {
 		this.fullName = fullName;
@@ -106,11 +108,11 @@ public class Cart extends DateAudit {
 		this.total = total;
 	}
 
-	public String getStatus() {
+	public CartStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(CartStatus status) {
 		this.status = status;
 	}
 
