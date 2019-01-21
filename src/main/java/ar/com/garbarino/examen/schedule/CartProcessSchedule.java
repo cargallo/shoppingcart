@@ -16,7 +16,7 @@ public class CartProcessSchedule {
 
 	private static final Logger log = LoggerFactory.getLogger(CartProcessSchedule.class);
 
-	@Scheduled(cron = "0/30 * * * * ?")
+	@Scheduled(cron = "0/59 * * * * ?")
 	public void scheduleFixedDelayTask() {
 		log.info("=========Fixed task Begins===========");
 		cartService.processReadyCarts();
